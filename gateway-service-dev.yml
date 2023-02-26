@@ -22,3 +22,7 @@ spring:
           uri: lb://stats-service
           predicates:
             - Path=/kpi/**
+
+  sleuth:
+    sampler:
+      probability: 1.0
