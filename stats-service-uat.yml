@@ -3,8 +3,7 @@ server:
 
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8902/eureka/
+    enabled: false
 
 management:
   endpoints:
@@ -25,10 +24,12 @@ resilience4j:
         enable-exponential-backoff: true
 
 spring:
+  zipkin:
+    enabled: false
   sleuth:
     sampler:
       probability: 1.0
 
 proxy:
   client-service:
-    url:
+    url: "${CLIENT_SERVICE_SERVICE_HOST:http://localhost}:8001"

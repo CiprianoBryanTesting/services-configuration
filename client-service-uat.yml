@@ -1,0 +1,48 @@
+server:
+  port: 8001
+
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/clients_db
+    username: root
+    password: s3cr3t
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  zipkin:
+    enabled: false
+
+  sleuth:
+    sampler:
+      probability: 1.0
+
+eureka:
+  client:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+feign:
+  circuitbreaker:
+    enabled: false
+
+resilience4j:
+  retry:
+    instances:
+      get-all:
+        max-attempts: 5
+        wait-duration: 1s
+        enable-exponential-backoff: true
+
+life:
+  expectancy: 76.5
