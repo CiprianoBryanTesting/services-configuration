@@ -15,6 +15,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
 
+  zipkin:
+    base-url: http://zipkin-server:9411
+
   sleuth:
     sampler:
       probability: 1.0

@@ -23,6 +23,9 @@ spring:
           predicates:
             - Path=/kpi/**
 
+  zipkin:
+    base-url: http://zipkin-server:9411
+
   sleuth:
     sampler:
       probability: 1.0
