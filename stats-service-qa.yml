@@ -1,0 +1,30 @@
+server:
+  port: 8101
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://registry-service:8902/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+feign:
+  circuitbreaker:
+    enabled: false
+
+resilience4j:
+  retry:
+    instances:
+      clients-kpi:
+        max-attempts: 5
+        wait-duration: 1s
+        enable-exponential-backoff: true
+
+spring:
+  sleuth:
+    sampler:
+      probability: 1.0

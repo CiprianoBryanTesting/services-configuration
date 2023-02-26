@@ -2,19 +2,18 @@ server:
   port: 8001
 
 spring:
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:clients_db
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/THEPOINT
+    username: root
+    password: s3cr3t
   jpa:
-    show-sql: true
     hibernate:
-      ddl-auto: update
-    defer-datasource-initialization: true
+      ddl-auto: none
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
 
   sleuth:
     sampler:
@@ -23,7 +22,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8902/eureka/
+      defaultZone: http://registry-service:8902/eureka/
 
 management:
   endpoints:
