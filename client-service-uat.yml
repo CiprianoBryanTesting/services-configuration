@@ -3,17 +3,13 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/clients_db
+    url: jdbc:mysql://clientsdb.cqjy0vuyfjqy.us-east-1.rds.amazonaws.com:3306/clients_db
     username: root
-    password: s3cr3t
+    password: s3cr3taws
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
-    open-in-view: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
 
   zipkin:
     enabled: false
